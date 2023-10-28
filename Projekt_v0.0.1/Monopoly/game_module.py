@@ -1,7 +1,7 @@
 import pygame
 import os
 
-SIZESCREEN = WIDTH, HEIGHT = 1920, 1080
+SIZESCREEN = WIDTH, HEIGHT = 1920, 1020
 
 LIGHTBLUE = pygame.color.THECOLORS['lightblue']
 

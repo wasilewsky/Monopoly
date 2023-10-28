@@ -126,7 +126,7 @@ def game():
 
     window_open = True
     while window_open:
-        screen.blit(gm.BACKGROUND, (-155, 0))
+        screen.blit(gm.BACKGROUND, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 window_open = False
@@ -134,8 +134,10 @@ def game():
                 if event.key == pygame.K_ESCAPE:
                     window_open = False
 
-        text = pygame.font.Font.render(pygame.font.SysFont(None, 72), f"rzut kostką: {ruch.show_dice_value()}  dobra ale osobno: {ruch.show_dice()[0]},{ruch.show_dice()[1]}", True, (0, 0, 0))
-        screen.blit(text, (300, 150))
+        text = pygame.font.Font.render(pygame.font.SysFont(None, 72), f"rzut kostką: {ruch.show_dice_value()}", True, (0, 0, 0))
+        screen.blit(text, (100, 150))
+        text2 = pygame.font.Font.render(pygame.font.SysFont(None, 72), f"dobra ale osobno: {ruch.show_dice()[0]},{ruch.show_dice()[1]}", True, (0, 0, 0))
+        screen.blit(text2, (100, 200))
 
         gra.draw()
 
@@ -144,8 +146,8 @@ def game():
 
 def main():
     window_open = True
-    play_button = Button(283, 130, gm.PLAY_BUTTON)
-    exit_button = Button(283, 380, gm.EXIT_BUTTON)
+    play_button = Button(screen.get_width()/2 - gm.PLAY_BUTTON.get_width()/2, 230, gm.PLAY_BUTTON)
+    exit_button = Button(screen.get_width()/2 - gm.PLAY_BUTTON.get_width()/2, 480, gm.EXIT_BUTTON)
     while window_open:
         screen.fill(gm.LIGHTBLUE)
 
