@@ -17,7 +17,6 @@ class Player:
     def show_color(self):
        pass
 
-
 class Field:
     def __init__(self, x, y, image, name):
         self.name = name
@@ -213,33 +212,11 @@ class Button:
         else:
             window.blit(self.b_image, (self.x+2, self.y+2))
 
-class ColorButton:
-    def __init__(self, x, y, image, color):
-        self.x = x
-        self.y = y
-        self.b_image = image
-        self.color = color
-        self.hitbox = pygame.Rect(self.x, self.y, self.b_image.get_width(), self.b_image.get_height())
-
-    def click(self):
-        if self.hitbox.collidepoint(pygame.mouse.get_pos()):
-            if pygame.mouse.get_pressed()[0]:
-                return True
-
-    def draw(self, window):
-        if self.hitbox.collidepoint(pygame.mouse.get_pos()):
-            window.blit(self.b_image, (self.x, self.y))
-        else:
-            window.blit(self.b_image, (self.x+2, self.y+2))
-
-    def getColor(self):
-        return self.color
-
 def colorPick():
-    redBtn = ColorButton(screen.get_width() / 2 - gm.REDBTN.get_width() / 2, 180, gm.REDBTN, 'red')
-    blueBtn = ColorButton(screen.get_width() / 2 - gm.BLUEBTN.get_width() / 2, 300, gm.BLUEBTN, 'blue')
-    greenBtn = ColorButton(screen.get_width() / 2 - gm.GREENBTN.get_width() / 2, 420, gm.GREENBTN, 'green')
-    purpleBtn = ColorButton(screen.get_width() / 2 - gm.PURPLEBTN.get_width() / 2, 540, gm.PURPLEBTN, 'purple')
+    redBtn = Button(screen.get_width() / 2 - gm.REDBTN.get_width() / 2, 180, gm.REDBTN)
+    blueBtn = Button(screen.get_width() / 2 - gm.BLUEBTN.get_width() / 2, 300, gm.BLUEBTN)
+    greenBtn = Button(screen.get_width() / 2 - gm.GREENBTN.get_width() / 2, 420, gm.GREENBTN)
+    purpleBtn = Button(screen.get_width() / 2 - gm.PURPLEBTN.get_width() / 2, 540, gm.PURPLEBTN)
 
     window_open = True
     while window_open:
@@ -254,25 +231,25 @@ def colorPick():
 
         if redBtn.click():
             window_open = False
-            Player.color = redBtn.color
+            Player.color = 'red'
             if not game():
                 window_open = True
 
         if blueBtn.click():
             window_open = False
-            Player.color = blueBtn.color
+            Player.color = 'blue'
             if not game():
                 window_open = True
 
         if greenBtn.click():
             window_open = False
-            Player.color = greenBtn.color
+            Player.color = 'green'
             if not game():
                 window_open = True
 
         if purpleBtn.click():
             window_open = False
-            Player.color = purpleBtn.color
+            Player.color = 'purple'
             if not game():
                 window_open = True
 
